@@ -47,6 +47,37 @@
             padding: 20px;
             background: #f5f6fa;
             overflow-y: auto;
+
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* TOP BAR - FIX */
+        .topbar {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .topbar-right {
+            margin-left: auto;   /* 🔥 KLJUČNI FIX */
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logout-btn {
+            background: #e74c3c;
+            color: white;
+            padding: 8px 14px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .logout-btn:hover {
+            background: #c0392b;
         }
 
         table {
@@ -80,14 +111,24 @@
         <a href="/ships">Ladje</a>
         <a href="/ports">Pristanišča</a>
         <a href="/countries">Države</a>
-
-      
-        
     </div>
 
     <!-- DESNA STRAN -->
     <div class="content">
-        {% block content %}{% endblock %}
+
+        <!-- TOP BAR -->
+        <div class="topbar">
+            <div class="topbar-right">
+                <span>{{ session.get('user') }}</span>
+                <a href="/logout" class="logout-btn">Odjava</a>
+            </div>
+        </div>
+
+        <!-- PAGE CONTENT -->
+        <div class="page">
+            {% block content %}{% endblock %}
+        </div>
+
     </div>
 
 </body>

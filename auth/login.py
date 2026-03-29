@@ -13,5 +13,5 @@ def login():
         print(f"Login successful. Role: {user['role']}")
         return user["role"]
 
-    print("Wrong credentials")
+    print("Vpis ni bil uspešen.")
     return None

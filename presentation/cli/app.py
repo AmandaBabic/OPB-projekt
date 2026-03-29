@@ -7,10 +7,14 @@ from presentation.cli.ports_page import show_ports_page
 from presentation.cli.countries_page import show_countries_page
 from presentation.cli.dashboard_page import show_dashboard_page
 
-
+from auth.login import login
 
 def main():
     db = Database()
+
+    role = login()
+    if not role:
+        return
 
     try:
         while True:
@@ -25,7 +29,10 @@ def main():
                     show_visits_page(db)
 
             elif choice == "3":
-                    show_ships_page(db)
+                if role == "admin":
+                        show_ships_page(db)
+                else:
+                        print("Do strani nimate dostopa!")
 
             elif choice == "4":
                     show_ports_page(db)
