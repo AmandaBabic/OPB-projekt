@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register ladij</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            height: 100vh;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            width: 220px;
+            background: #1f2a40;
+            color: white;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            border-right: 2px solid #111;
+        }
+
+        .sidebar h2 {
+            margin-top: 0;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            margin: 3px 0;
+            border-radius: 5px;
+            display: block;
+        }
+
+        .sidebar a:hover {
+            background: #2f3f5f;
+        }
+
+        /* CONTENT */
+        .content {
+            flex: 1;
+            padding: 20px;
+            background: #f5f6fa;
+            overflow-y: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        th {
+            background: #1f2a40;
+            color: white;
+            padding: 10px;
+            text-align: left;
+        }
+
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- LEVI MENI -->
+    <div class="sidebar">
+        <h2>REGISTER LADIJ</h2>
+
+        <a href="/">Povzetek</a>
+        <a href="/visits">Obiski</a>
+        <a href="/ships">Ladje</a>
+        <a href="/ports">Pristanišča</a>
+        <a href="/countries">Države</a>
+
+      
+        
+    </div>
+
+    <!-- DESNA STRAN -->
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+
+</body>
+</html>

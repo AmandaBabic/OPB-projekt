@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Države</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Država</th>
+            <th>ISO koda</th>
+            <th>Regija</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for c in countries %}
+        <tr>
+            <td>{{ c.name }}</td>
+            <td>{{ c.iso }}</td>
+            <td>{{ c.region }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
