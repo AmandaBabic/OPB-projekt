@@ -1,2 +1,2 @@
 # OPB-projekt
-Projekt pri predmetu Osnove poadtkovnih baz.
+Projekt pri predmetu Podatkovne baze.
