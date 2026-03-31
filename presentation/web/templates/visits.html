@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Obiski</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Ladja</th>
+            <th>Pristanišče</th>
+            <th>Status</th>
+            <th>ETA</th>
+            <th>ATA</th>
+            <th>ETD</th>
+            <th>ATD</th>
+            <th>Tovor</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for v in visits %}
+        <tr>
+            <td>{{ v.ship }}</td>
+            <td>{{ v.port }}</td>
+            <td>{{ v.status }}</td>
+            <td>{{ v.ETA }}</td>
+            <td>{{ v.ATA }}</td>
+            <td>{{ v.ETD }}</td>
+            <td>{{ v.ATD }}</td>
+            <td>{{ v.cargo }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

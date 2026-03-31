@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Ladje</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Ladja</th>
+            <th>IMO številka</th>
+            <th>MMSI številka</th>
+            <th>Klicni znak</th>
+            <th>Dolžina</th>
+            <th>Bruto tonaža</th>
+            <th>Tip ladje</th>
+            <th>Opis</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for ship in ships %}
+        <tr>
+            <td>{{ ship.ship_name }}</td>
+            <td>{{ ship.imo }}</td>
+            <td>{{ ship.mmsi }}</td>
+            <td>{{ ship.call_sign }}</td>
+            <td>{{ ship.length }}</td>
+            <td>{{ ship.gross_tonnage }}</td>
+            <td>{{ ship.type }}</td>
+            <td>{{ ship.description }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

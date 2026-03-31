@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+    .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+    }
+
+    .card {
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 8px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    h2 {
+        margin-bottom: 10px;
+    }
+</style>
+
+<h1>POVZETEK</h1>
+
+<div class="grid">
+
+    <div class="card">
+        <h2>Stanje obiskov ladij</h2>
+        <canvas id="statusChart"></canvas>
+    </div>
+
+    <div class="card">
+        <h2>Vrste tovora</h2>
+        <canvas id="cargoChart"></canvas>
+    </div>
+
+    <div class="card">
+        <h2>Nevarnost tovora</h2>
+        <canvas id="hazardChart"></canvas>
+    </div>
+
+    <div class="card">
+        <h2>Najbolj obremenjena pristanišča</h2>
+
+        <table>
+            <tr>
+                <th>Pristanišče</th>
+                <th>Število obiskov</th>
+            </tr>
+
+            {% for row in busiest_ports %}
+            <tr>
+                <td>{{ row.port }}</td>
+                <td>{{ row.visits }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+</div>
+
+<script>
+const statusData = {{ visits_by_status | tojson }};
+const statusLabels = statusData.map(x => x.label);
+const statusValues = statusData.map(x => x.value);
+
+new Chart(document.getElementById("statusChart"), {
+    type: 'bar',
+    data: {
+        labels: statusLabels,
+        datasets: [{
+            label: 'Obiski',
+            data: statusValues
+        }]
+    },
+    options: {
+        plugins: {
+            legend: { display: false }
+        }
+    }
+});
+
+const cargoData = {{ cargo_distribution | tojson }};
+const cargoLabels = cargoData.map(x => x.label);
+const cargoValues = cargoData.map(x => x.value);
+
+new Chart(document.getElementById("cargoChart"), {
+    type: 'pie',
+    data: {
+        labels: cargoLabels,
+        datasets: [{
+            data: cargoValues
+        }]
+    }
+});
+
+const hazardData = {{ hazardous | tojson }};
+const hazardLabels = hazardData.map(x =>
+    x.label === "Yes" ? "Nevarni tovor" : "Standardni tovor"
+);
+const hazardValues = hazardData.map(x => x.value);
+
+new Chart(document.getElementById("hazardChart"), {
+    type: 'doughnut',
+    data: {
+        labels: hazardLabels,
+        datasets: [{
+            data: hazardValues
+        }]
+    }
+});
+</script>
+
+{% endblock %}
