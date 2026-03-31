@@ -1,0 +1,7 @@
+flask
+pandas
+numpy
+psycopg2-binary
+plotly
+requests
+beautifulsoup4
