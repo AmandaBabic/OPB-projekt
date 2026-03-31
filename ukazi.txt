@@ -1,9 +1,4 @@
-# \i ship.sql
-
 # docker compose exec db psql -U postgres -d ship
-
-# python scripts\4import_all_data.py
-# python scripts\5import_status.py
 
 # python -m repositories.test
 # python -m presentation.app
