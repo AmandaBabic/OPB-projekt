@@ -62,9 +62,10 @@ docker compose exec db psql -U postgres -d ship
 ```
 
 ### 7. Uvoz podatkov
-CSV datoteke iz mape data/ se uvozijo v bazo preko repository razredov:
-
-
+CSV datoteke iz mape data/ se uvozijo v bazo preko ukaza:
+```bash
+python scripts/insert_data.py
+```
 
 ### 8. Zagon aplikacije
 Zagon preko CLI:
