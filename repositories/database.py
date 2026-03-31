@@ -1,7 +1,7 @@
 import psycopg2
 from repositories.database_config import *
 
-class Database: #sem raje kopirala da se ne bo kaj uničlo zdaj na koncu
+class Database: #sem raje kopirala, da se ne bo kaj uničilo zdaj na koncu
     def __init__(self):
         self.conn = psycopg2.connect(
             dbname=DB_NAME,
